@@ -13,6 +13,7 @@ userCtrl.createUser = async (req, res) => {
   await newUser.save();
   res.json('User created');
 };
+
 userCtrl.deleteUser = async (req, res) => {
   await User.findByIdAndDelete(req.params.id);
   res.json('User deleted');
