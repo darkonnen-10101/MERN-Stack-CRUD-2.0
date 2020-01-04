@@ -5,3 +5,5 @@ npm install react-router-dom
 npm install axios
 
 npm install react-datepicker
+
+npm install timeago.js

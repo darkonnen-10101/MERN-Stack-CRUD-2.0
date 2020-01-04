@@ -17,18 +17,28 @@ class CreateNote extends Component {
     const res = await axios.get('http://localhost:4000/api/users');
 
     this.setState({
-      users: res.data
+      users: res.data,
+      userSelected: res.data[0].username
     });
+
   }
 
-  onSubmit = (e) => {
+  onSubmit = async (e) => {
     e.preventDefault();
+    const newNote = {
+      title: this.state.title,
+      content: this.state.content,
+      date: this.state.date,
+      author: this.state.userSelected
+    };
+    await axios.post('http://localhost:4000/api/notes', newNote);
+    window.location.href = '/';
 
   }
 
   onInputChange = (e) => {
     this.setState({
-      e.target.name : e.target.value
+      [e.target.name] : e.target.value
     });
   }
 
